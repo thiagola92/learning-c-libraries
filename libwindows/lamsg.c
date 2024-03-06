@@ -5,6 +5,6 @@
 void lasend(char *msg) {
   // Fake sending msg
   printf("Sending '%s'\n", msg);
-  Sleep(1000);
+  Sleep(1);
   printf("Sent\n");
 }

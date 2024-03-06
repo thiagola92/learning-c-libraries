@@ -5,6 +5,6 @@
 void laconnect(char *ip) {
   // Fake connecting to IP
   printf("Connecting to %s\n", ip);
-  Sleep(1000);
+  Sleep(1);
   printf("Connected\n");
 }
