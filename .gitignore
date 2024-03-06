@@ -6,5 +6,7 @@ test/main
 
 # Windows
 \.vs
+*.obj
 *.dll
 *.lib
+*.exe
