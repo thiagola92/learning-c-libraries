@@ -30,6 +30,11 @@
   - `-l<name>`: Search lib `lib<name>.a`  
 - `./main`  
 
+# Windows - Static
+- `cd libwindows`
+- `cl -c laconn.c lamsg.c`  
+
 # References
 - https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/  
 - https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html  
+- 

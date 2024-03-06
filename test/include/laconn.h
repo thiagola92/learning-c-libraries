@@ -1,6 +1,6 @@
 #ifndef LACONN
 #define LACONN
 
-void connect(char *);
+void laconnect(char *);
 
 #endif

@@ -1,4 +1,10 @@
+# Linux
 *.o
 *.a
 *.so
 test/main
+
+# Windows
+\.vs
+*.dll
+*.lib

@@ -1,10 +1,10 @@
 #include "lamsg.h"
 #include <stdio.h>
-#include <unistd.h>
+#include <windows.h>
 
 void lasend(char *msg) {
   // Fake sending msg
   printf("Sending '%s'\n", msg);
-  sleep(1);
+  Sleep(1000);
   printf("Sent\n");
 }
