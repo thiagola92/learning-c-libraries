@@ -10,3 +10,4 @@ test/main
 *.dll
 *.lib
 *.exe
+*.exp

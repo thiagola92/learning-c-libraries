@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <windows.h>
 
-void laconnect(char *ip) {
+LA_DLL void laconnect(char *ip) {
   // Fake connecting to IP
   printf("Connecting to %s\n", ip);
   Sleep(1);
