@@ -28,6 +28,7 @@
   - `-L<dir>`: Add directory `<dir>` to the list of directories to be searched for `-l`
   - `-l<name>`: Search lib `lib<name>.a`
   - `-Wl,<option>`: Pass `<option>` as an option to the GNU linker. If option contains commas, it is split into multiple options at the commas
+    - This is optional, if not included it will search in the default locations (like `/usr/lib`)
 - `./main`
 
 # Windows - Static
