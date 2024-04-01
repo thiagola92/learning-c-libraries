@@ -2,14 +2,14 @@
 
 # Linux - Static
 
-Create:
+Creating:
 - `cd lib`
 - `gcc -c laconn.c lamsg.c`
   - `-c`: Compile and assemble, but do not link
 - `ar -r libla.a laconn.o lamsg.o`
   - `-r`: Replace existing or insert new file(s) into the archive
 
-Test:
+Testing:
 - `cp libla.a ../test/lib`
 - `cd ../test`
 - `gcc main.c -o main -Iinclude -Llib -lla`
@@ -21,13 +21,13 @@ Test:
 
 # Linux - Dynamic
 
-Create:
+Creating:
 - `cd lib`
 - `gcc -c laconn.c lamsg.c`
   - `-c`: Compile and assemble, but do not link
 - `gcc -shared -o libla.so *.o`
 
-Test:
+Testing:
 - `cp libla.so ../test/lib`
 - `cd ../test`
 - `gcc main.c -o main -Iinclude -Llib -lla -Wl,-Rlib`
@@ -41,7 +41,7 @@ Test:
 
 # Windows - Static
 
-Create:
+Creating:
 - `cd lib_windows`
 - `cl /c laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
@@ -49,7 +49,7 @@ Create:
 - `lib /OUT:libla.lib laconn.obj lamsg.obj`
   - `/OUT:<file>`: Place the output into `<file>`
 
-Test:
+Testing:
 - `cp libla.lib ../test_windows/lib`
 - `cd ../test_windows`
 - `cl /Iinclude main.c lib\libla.lib`
@@ -59,7 +59,7 @@ Test:
 
 # Windows - Dynamic
 
-Create:
+Creating:
 - `cd lib_windows`
 - `cl /c /MD /DLA_EXPORT_DLL laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
@@ -69,7 +69,7 @@ Create:
   - `/DLL`: Builds a `.dll`
   - `/OUT:<file>`: Place the output into `<file>`
 
-Test:
+Testing:
 - `cp libla.dll ../test_windows/lib`
 - `cp libla.lib ../test_windows/lib`
 - `cd ../test_windows`
@@ -86,16 +86,20 @@ Test:
   - Windows search for dynamic libraries in the current directory
 - `.\main.exe`
 
-Test: https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170
+(TOOD) Test: https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170
 
 # References
+
+Both:
 - https://www.oreilly.com/library/view/c-cookbook/0596007612/ch01s04.html
 - https://www.oreilly.com/library/view/c-cookbook/0596007612/ch01s05.html
 
+Linux:
 - https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/
 - https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
 - https://www.youtube.com/watch?v=JbHmin2Wtmc
 
+Windows:
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax?view=msvc-170
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-alphabetically?view=msvc-170
 - https://learn.microsoft.com/en-us/cpp/build/reference/linker-options?view=msvc-170
