@@ -1,11 +1,15 @@
 # learning-c-libraries
 
 # Linux - Static
+
+Create:
 - `cd lib`
 - `gcc -c laconn.c lamsg.c`
   - `-c`: Compile and assemble, but do not link
 - `ar -r libla.a laconn.o lamsg.o`
   - `-r`: Replace existing or insert new file(s) into the archive
+
+Test:
 - `cp libla.a ../test/lib`
 - `cd ../test`
 - `gcc main.c -o main -Iinclude -Llib -lla`
@@ -16,10 +20,14 @@
 - `./main`
 
 # Linux - Dynamic
+
+Create:
 - `cd lib`
 - `gcc -c laconn.c lamsg.c`
   - `-c`: Compile and assemble, but do not link
 - `gcc -shared -o libla.so *.o`
+
+Test:
 - `cp libla.so ../test/lib`
 - `cd ../test`
 - `gcc main.c -o main -Iinclude -Llib -lla -Wl,-Rlib`
@@ -32,12 +40,16 @@
 - `./main`
 
 # Windows - Static
+
+Create:
 - `cd lib_windows`
 - `cl /c laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
   - `/MT`: (default) A copy of the runtime library is included in the resulting executable
 - `lib /OUT:libla.lib laconn.obj lamsg.obj`
   - `/OUT:<file>`: Place the output into `<file>`
+
+Test:
 - `cp libla.lib ../test_windows/lib`
 - `cd ../test_windows`
 - `cl /Iinclude main.c lib\libla.lib`
@@ -46,6 +58,8 @@
 - `.\main.exe`
 
 # Windows - Dynamic
+
+Create:
 - `cd lib_windows`
 - `cl /c /MD /DLA_EXPORT_DLL laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
@@ -54,6 +68,8 @@
 - `link /DLL /OUT:libla.dll laconn.obj lamsg.obj`
   - `/DLL`: Builds a `.dll`
   - `/OUT:<file>`: Place the output into `<file>`
+
+Test:
 - `cp libla.dll ../test_windows/lib`
 - `cp libla.lib ../test_windows/lib`
 - `cd ../test_windows`
