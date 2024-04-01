@@ -71,19 +71,18 @@ Creating:
 
 Testing:
 - `cp libla.dll ../test_windows/lib`
-- `cp libla.lib ../test_windows/lib`
+- `cp libla.lib ../test_windows`
+  - Windows search for dynamic libraries in the same directory as the executable
 - `cd ../test_windows`
 - `cl /c /Iinclude /DLA_IMPORT_DLL main.c`
   - `/c`: Compile and assemble, but do not link
   - `/I<dir>`: Add the directory `<dir>` to the list of directories to be searched for header files
   - `/D<definition>`: Define something exactly like `#define <definition>`
-- `link /LIBPATH:lib lib\libla.lib main.obj`
+- `link /LIBPATH:lib libla.lib main.obj`
   - Order matters
   - `/link <options>`: Pass one or more options to linker
 	- `/DLL`: Builds a `.dll`
 	- `/LIBPATH:<dir>`: Search lib in `<dir>` before the environmental library path
-- `cp lib/libla.dll .`
-  - Windows search for dynamic libraries in the current directory
 - `.\main.exe`
 
 (TOOD) Test: https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170
