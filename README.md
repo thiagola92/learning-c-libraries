@@ -85,13 +85,17 @@ Testing:
 (TOOD) Test: https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170
 
 # References
+
+Both:
 - https://www.oreilly.com/library/view/c-cookbook/0596007612/ch01s04.html
 - https://www.oreilly.com/library/view/c-cookbook/0596007612/ch01s05.html
 
+Linux:
 - https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/
 - https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
 - https://www.youtube.com/watch?v=JbHmin2Wtmc
 
+Windows:
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax?view=msvc-170
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-alphabetically?view=msvc-170
 - https://learn.microsoft.com/en-us/cpp/build/reference/linker-options?view=msvc-170
