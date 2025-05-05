@@ -129,8 +129,6 @@ Linux:
 - https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/
 - https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
 - https://www.youtube.com/watch?v=JbHmin2Wtmc
-- https://man7.org/linux/man-pages/man1/nm.1p.html
-- https://www.man7.org/linux/man-pages/man1/objdump.1.html
 
 Windows:
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax?view=msvc-170
