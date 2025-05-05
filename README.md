@@ -1,6 +1,9 @@
 # learning-c-libraries
 
-# Linux - Static
+# Linux
+`cd linux`
+
+## Static
 
 Creating:
 - `cd lib`
@@ -19,13 +22,13 @@ Testing:
   - `-l<name>`: Search lib `lib<name>.a`
 - `./main`
 
-# Linux - Dynamic
+## Dynamic
 
 Creating:
 - `cd lib`
 - `gcc -c laconn.c lamsg.c`
   - `-c`: Compile and assemble, but do not link
-- `gcc -shared -o libla.so *.o`
+- `gcc -shared -o libla.so laconn.o lamsg.o`
 
 Testing:
 - `cp libla.so ../test/lib`
@@ -36,13 +39,42 @@ Testing:
   - `-L<dir>`: Add directory `<dir>` to the list of directories to be searched for `-l`
   - `-l<name>`: Search lib `lib<name>.a`
   - `-Wl,<option>`: Pass `<option>` as an option to the GNU linker. If option contains commas, it is split into multiple options at the commas
-    - This is optional, if not included it will search in the default locations (like `/usr/lib`)
+    - `-Rlib`: This is optional, if not included it will search in the default locations (like `/usr/lib`)
 - `./main`
 
-# Windows - Static
+## Static inside Dynamic
 
 Creating:
-- `cd lib_windows`
+- `cd lib`
+- `gcc -fPIC -c laconn.c lamsg.c`
+  - `-c`: Compile and assemble, but do not link
+- `ar -r laconn.a laconn.o`
+  - `-r`: Replace existing or insert new file(s) into the archive
+- `gcc -shared -o libla.so lamsg.o -Wl,--whole-archive laconn.a -Wl,--no-whole-archive`
+  - `-Wl,<option>`: Pass `<option>` as an option to the GNU linker. If option contains commas, it is split into multiple options at the commas
+    - By default, only the used part of your code are copied to the library (used functions and variables). How functions/variables from `laconn.a` are never called from `lamsg.o`, they are not imported unless we briefly disable this feature while copying `laconn.a`
+      - `--whole-archive`: Enable including everything from the files
+      - `--no-whole-archive`: Disable including everything from the files
+
+Testing:
+- `cp libla.so ../test/lib`
+- `cd ../test`
+- `gcc main.c -o main -Iinclude -Llib -lla -Wl,-Rlib`
+  - `-o <file>`: Place the output into `<file>`
+  - `-I<dir>`: Add the directory `<dir>` to the head of the list of directories to be searched for header files
+  - `-L<dir>`: Add directory `<dir>` to the list of directories to be searched for `-l`
+  - `-l<name>`: Search lib `lib<name>.a`
+  - `-Wl,<option>`: Pass `<option>` as an option to the GNU linker. If option contains commas, it is split into multiple options at the commas
+    - `-Rlib`: This is optional, if not included it will search in the default locations (like `/usr/lib`)
+- `./main`
+
+# Windows
+`cd windows`
+
+## Static
+
+Creating:
+- `cd lib`
 - `cl /c laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
   - `/MT`: (default) A copy of the runtime library is included in the resulting executable
@@ -50,17 +82,17 @@ Creating:
   - `/OUT:<file>`: Place the output into `<file>`
 
 Testing:
-- `cp libla.lib ../test_windows/lib`
-- `cd ../test_windows`
+- `cp libla.lib ../test/lib`
+- `cd ../test`
 - `cl /Iinclude main.c lib\libla.lib`
   - Order matters
   - `/I<dir>`: Add the directory `<dir>` to the list of directories to be searched for header files
 - `.\main.exe`
 
-# Windows - Dynamic
+## Dynamic
 
 Creating:
-- `cd lib_windows`
+- `cd lib`
 - `cl /c /MD /DLA_EXPORT_DLL laconn.c lamsg.c`
   - `/c`: Compile and assemble, but do not link
   - `/MD`: Application/DLL will use the shared CRT DLL (msvcrt.dll or ucrtbase.dll)
@@ -70,10 +102,10 @@ Creating:
   - `/OUT:<file>`: Place the output into `<file>`
 
 Testing:
-- `cp libla.dll ../test_windows/lib`
-- `cp libla.lib ../test_windows`
+- `cp libla.dll ../test/lib`
+- `cp libla.lib ../test`
   - Windows search for dynamic libraries in the same directory as the executable
-- `cd ../test_windows`
+- `cd ../test`
 - `cl /c /Iinclude /DLA_IMPORT_DLL main.c`
   - `/c`: Compile and assemble, but do not link
   - `/I<dir>`: Add the directory `<dir>` to the list of directories to be searched for header files
@@ -97,6 +129,8 @@ Linux:
 - https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/
 - https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
 - https://www.youtube.com/watch?v=JbHmin2Wtmc
+- https://man7.org/linux/man-pages/man1/nm.1p.html
+- https://www.man7.org/linux/man-pages/man1/objdump.1.html
 
 Windows:
 - https://learn.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax?view=msvc-170
@@ -106,3 +140,4 @@ Windows:
 - https://www.youtube.com/watch?v=Wt4dxDNmDA8
 - https://stackoverflow.com/questions/47614835/how-to-compile-static-lib-library-for-windows-in-linux-or-macos
 - https://stackoverflow.com/questions/77590683/compiling-a-dynamic-link-library-dll-on-windows-with-cl-exe-and-powershell-but
+
